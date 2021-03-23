@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>JavaScript - read JSON from URL</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	
+</head>
+
+<body>
+
+ <section>
+        <h1>GeeksForGeeks</h1>
+  
+        <!-- TABLE CONSTRUCTION-->
+        <table id='table'>
+            <!-- HEADING FORMATION -->
+            <tr>
+                <th>GFG UserHandle</th>
+                <th>Practice Problems</th>
+            </tr>
+  
+            <script>
+                $(document).ready(function () {
+                    $.getJSON('https://cdn.shopify.com/s/files/1/0548/9478/8767/files/new.json?v=1616500282',
+                            function (data) {
+                        var student = '';
+                        $.each(data, function (key, value) {
+						if (value.date=='25 / June / 1924'){
+						alert(value.date);
+                            student += '<tr>';
+                            student += '<td>' + 
+                                value.date + '</td>';
+  
+                            student += '<td>' + 
+                                value.html + '</td>';
+  
+                            student += '</tr>';
+							}
+                        });
+                          
+                        //INSERTING ROWS INTO TABLE 
+                        $('#table').append(student);
+                    });
+                });
+            </script>
+    </section>    
+</body>
+</html>
